@@ -2,10 +2,10 @@ import os
 import psycopg
 from psycopg.rows import dict_row
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)  # permite que el front-end (otro dominio) llame a esta API
+# Nota: CORS se maneja centralizadamente en el proxy inverso (Nginx),
+# no aquí, para evitar headers duplicados (Access-Control-Allow-Origin).
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
 
